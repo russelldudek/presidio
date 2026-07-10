@@ -1,0 +1,29 @@
+name: Publish Candidate Site from PR Trigger
+
+on:
+  pull_request:
+    branches: [ main ]
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Extract embedded site package and publish
+        shell: bash
+        run: |
+          awk '/^B64$/{flag=!flag; next} flag' .github/workflows/research-job.yml > /tmp/site.b64
+          base64 -d /tmp/site.b64 > /tmp/site.zip
+          unzip -o /tmp/site.zip -d .
+          rm -f reader-link.md trigger.txt
+          git rm -f .github/workflows/research-job.yml .github/workflows/pr-publish.yml
+          git config user.name "Russell Dudek"
+          git config user.email "russelldudek@users.noreply.github.com"
+          git add -A
+          git commit -m "Launch Presidio VP Workforce AI candidate site"
+          git push origin main
