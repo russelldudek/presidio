@@ -15,29 +15,32 @@ jobs:
         run: |
           python - <<'PY'
           import requests
-          from bs4 import BeautifulSoup
-          import re
+          import re, html
           url = 'https://recruiting.ultipro.com/PRE1019PRSD/JobBoard/4c05f321-903e-43d5-a4c0-5d9dd55dc34d/OpportunityDetail?opportunityId=ed167829-e71b-4771-8216-9326404d6f0a&source=LinkedIn'
           r = requests.get(url, headers={'User-Agent':'Mozilla/5.0'}, timeout=60)
           print('STATUS', r.status_code)
           print('LEN', len(r.text))
           open('job.html','w',encoding='utf-8').write(r.text)
-          soup=BeautifulSoup(r.text,'html.parser')
-          print('TITLE', soup.title.get_text(' ',strip=True) if soup.title else '')
-          text='\n'.join(x.strip() for x in soup.stripped_strings)
+          title = re.search(r'<title[^>]*>(.*?)</title>', r.text, flags=re.I|re.S)
+          print('TITLE', html.unescape(re.sub(r'<[^>]+>',' ', title.group(1))).strip() if title else '')
+          text = re.sub(r'<script\b[^>]*>.*?</script>', ' ', r.text, flags=re.I|re.S)
+          text = re.sub(r'<style\b[^>]*>.*?</style>', ' ', text, flags=re.I|re.S)
+          text = re.sub(r'<[^>]+>', '\n', text)
+          text = html.unescape(text)
+          text = '\n'.join(line.strip() for line in text.splitlines() if line.strip())
           print('VISIBLE_TEXT_START')
-          print(text[:30000])
+          print(text[:50000])
           print('VISIBLE_TEXT_END')
           print('MATCH_CONTEXT')
           target='ed167829-e71b-4771-8216-9326404d6f0a'
           for m in re.finditer(target, r.text, flags=re.I):
-              a=max(0,m.start()-3000); b=min(len(r.text),m.end()+8000)
+              a=max(0,m.start()-3000); b=min(len(r.text),m.end()+12000)
               print(r.text[a:b])
           print('KEYWORD_CONTEXT')
-          for kw in ['opportunityTitle','jobTitle','description','Presidio','Artificial Intelligence','AI']:
+          for kw in ['opportunityTitle','jobTitle','description','Presidio','Artificial Intelligence','AI','location','salary']:
               pos=r.text.lower().find(kw.lower())
               if pos!=-1:
-                  print('\n---',kw,'---\n',r.text[max(0,pos-1000):pos+5000])
+                  print('\n---',kw,'---\n',r.text[max(0,pos-1500):pos+8000])
           PY
       - name: Upload raw page
         uses: actions/upload-artifact@v4
