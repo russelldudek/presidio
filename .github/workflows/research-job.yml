@@ -1,0 +1,44 @@
+name: Research Presidio Job
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  fetch-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch job page
+        run: |
+          python - <<'PY'
+          import requests
+          from bs4 import BeautifulSoup
+          import re, json
+          url = 'https://recruiting.ultipro.com/PRE1019PRSD/JobBoard/4c05f321-903e-43d5-a4c0-5d9dd55dc34d/OpportunityDetail?opportunityId=ed167829-e71b-4771-8216-9326404d6f0a&source=LinkedIn'
+          r = requests.get(url, headers={'User-Agent':'Mozilla/5.0'}, timeout=60)
+          print('STATUS', r.status_code)
+          print('LEN', len(r.text))
+          open('job.html','w',encoding='utf-8').write(r.text)
+          soup=BeautifulSoup(r.text,'html.parser')
+          print('TITLE', soup.title.get_text(' ',strip=True) if soup.title else '')
+          text='\n'.join(x.strip() for x in soup.stripped_strings)
+          print('VISIBLE_TEXT_START')
+          print(text[:30000])
+          print('VISIBLE_TEXT_END')
+          print('MATCH_CONTEXT')
+          target='ed167829-e71b-4771-8216-9326404d6f0a'
+          for m in re.finditer(target, r.text, flags=re.I):
+              a=max(0,m.start()-3000); b=min(len(r.text),m.end()+8000)
+              print(r.text[a:b])
+          print('KEYWORD_CONTEXT')
+          for kw in ['opportunityTitle','jobTitle','description','Presidio','Artificial Intelligence','AI']:
+              pos=r.text.lower().find(kw.lower())
+              if pos!=-1:
+                  print('\n---',kw,'---\n',r.text[max(0,pos-1000):pos+5000])
+          PY
+      - name: Upload raw page
+        uses: actions/upload-artifact@v4
+        with:
+          name: presidio-job-page
+          path: job.html
