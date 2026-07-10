@@ -47,11 +47,15 @@ jobs:
           jq '.opportunities[] | select(.Id == "ed167829-e71b-4771-8216-9326404d6f0a")' results.json > job.json
           test -s job.json
 
+          curl -sSL \
+            'https://recruiting.ultipro.com/PRE1019PRSD/JobBoard/4c05f321-903e-43d5-a4c0-5d9dd55dc34d/OpportunityDetail?opportunityId=ed167829-e71b-4771-8216-9326404d6f0a&source=LinkedIn' \
+            -o job_page.html
+
       - name: Commit role research
         shell: bash
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add job.json
-          git diff --cached --quiet || git commit -m 'Capture target role details [skip ci]'
+          git add job.json job_page.html
+          git diff --cached --quiet || git commit -m 'Capture target role page [skip ci]'
           git push
