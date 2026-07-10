@@ -1,1 +1,850 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Russell Dudek | Presidio Workforce AI & Productivity Vision</title><style>body{margin:0;background:#071b2d;color:white;font-family:Arial,sans-serif;display:grid;place-items:center;min-height:100vh}.loading{text-align:center}.mark{width:54px;height:54px;border:5px solid rgba(255,255,255,.18);border-top-color:#00a9e0;border-radius:50%;margin:0 auto 18px;animation:s 1s linear infinite}@keyframes s{to{transform:rotate(360deg)}}</style></head><body><div class="loading"><div class="mark"></div><strong>Loading Presidio candidate vision…</strong></div><script type="module">const base='https://raw.githubusercontent.com/russelldudek/presidio/main/.deploy/';const files=['index_01.txt','index_02.txt','index_03.txt','index_04.txt'];const parts=await Promise.all(files.map(async f=>{const r=await fetch(base+f);if(!r.ok)throw new Error('Unable to load '+f);return r.text()}));const b64=parts.join('').replace(/\s/g,'');const bytes=Uint8Array.from(atob(b64),c=>c.charCodeAt(0));const stream=new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'));let html=await new Response(stream).text();html=html.replaceAll('presidio_logo.jpg','https://mms.businesswire.com/media/20221013005091/en/1247950/4/LOGO-Presidio-512-square.jpg');document.open();document.write(html);document.close();</script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Russell Dudek — candidate vision for VP Workforce AI & Productivity at Presidio." />
+<title>Russell Dudek | Presidio Workforce AI & Productivity Vision</title>
+<style>
+:root{
+  --navy:#071b2d;
+  --navy2:#0a2941;
+  --cyan:#00a9e0;
+  --cyan2:#38d6ff;
+  --teal:#00d6c7;
+  --lime:#b5e853;
+  --ink:#10202c;
+  --muted:#61717c;
+  --paper:#ffffff;
+  --mist:#f3f8fb;
+  --line:#d9e7ee;
+  --shadow:0 28px 80px rgba(7,27,45,.16);
+  --max:1220px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;color:var(--ink);background:#fff;
+  font-family:Inter,Arial,Helvetica,sans-serif;
+  line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+a{color:inherit}
+.wrap{width:min(var(--max),calc(100% - 44px));margin:auto}
+.section{padding:96px 0;position:relative}
+.section.mist{background:linear-gradient(180deg,#f7fbfd 0%,var(--mist) 100%)}
+.section.dark{background:radial-gradient(circle at 82% 8%,rgba(0,169,224,.14),transparent 29rem),linear-gradient(180deg,#09253a,var(--navy));color:white;overflow:hidden}
+.section-head{max-width:980px;margin-bottom:42px}
+.kicker{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:8px 12px;border:1px solid rgba(0,169,224,.2);
+  border-radius:999px;background:rgba(255,255,255,.7);
+  color:#007fae;font-size:.72rem;font-weight:950;
+  letter-spacing:.15em;text-transform:uppercase;margin-bottom:18px;
+}
+.kicker:before{content:"";width:9px;height:9px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),var(--teal))}
+.dark .kicker{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.14);color:var(--cyan2)}
+h1,h2,h3,p{margin-top:0}
+h1{
+  font-size:clamp(3.2rem,7.2vw,7.2rem);line-height:.91;
+  letter-spacing:-.067em;max-width:1100px;margin-bottom:28px;font-weight:950;
+}
+h2{
+  font-size:clamp(2.25rem,4.8vw,4.7rem);line-height:1;
+  letter-spacing:-.053em;margin-bottom:18px;max-width:1050px;font-weight:950;
+}
+h3{font-size:1.2rem;line-height:1.22;letter-spacing:-.02em;margin-bottom:10px}
+.lede{max-width:930px;font-size:clamp(1.15rem,2vw,1.5rem);line-height:1.52;color:#40515d}
+.dark .lede{color:#d3e4ec}
+.gradient-text{
+  background:linear-gradient(90deg,var(--cyan) 0%,var(--teal) 55%,var(--lime) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+
+/* nav */
+body{padding-top:78px}
+.site-header{
+  position:fixed;top:0;left:0;right:0;height:78px;z-index:1000;
+  background:rgba(255,255,255,.985);
+  border-bottom:1px solid rgba(7,27,45,.08);
+  transform:translateZ(0);backface-visibility:hidden;
+  transition:box-shadow .22s ease,border-color .22s ease;
+}
+.site-header.scrolled{
+  box-shadow:0 12px 34px rgba(7,27,45,.10);
+  border-bottom-color:rgba(0,169,224,.18);
+}
+.nav{height:78px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:0}
+.brand-lockup{display:flex;align-items:center;gap:10px}
+.brand-glyph{display:grid;grid-template-columns:repeat(3,6px);gap:3px;transform:skewX(-18deg)}
+.brand-glyph i{display:block;width:6px;height:22px;border-radius:2px;background:linear-gradient(180deg,var(--cyan2),var(--cyan))}
+.brand-name{font-size:1.55rem;line-height:1;font-weight:950;letter-spacing:-.045em;color:var(--navy)}
+.brand-sub{
+  border-left:1px solid var(--line);padding-left:14px;color:var(--muted);
+  font-size:.71rem;font-weight:900;letter-spacing:.08em;white-space:nowrap;
+}
+.navlinks{display:flex;align-items:center;gap:17px}
+.navlinks a{text-decoration:none;font-size:.82rem;font-weight:900;color:#465966}
+.navlinks a:hover{color:var(--cyan)}
+.print-btn{
+  border:0;border-radius:999px;padding:10px 15px;
+  color:white;font-weight:950;cursor:pointer;
+  background:linear-gradient(90deg,var(--cyan),#0088bd);
+  box-shadow:0 8px 18px rgba(0,169,224,.2);
+}
+
+/* hero */
+.hero{padding:104px 0 86px;position:relative;overflow:hidden;background:
+  radial-gradient(circle at 85% 10%,rgba(0,169,224,.16),transparent 28rem),
+  radial-gradient(circle at 8% 80%,rgba(0,214,199,.10),transparent 24rem),
+  #fff;
+}
+.hero-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:55px;align-items:center}
+.hero h1 .line{display:block}
+.hero h1 .accent{position:relative;display:inline-block}
+.hero h1 .accent:after{
+  content:"";position:absolute;left:0;right:0;bottom:-10px;height:7px;border-radius:99px;
+  background:linear-gradient(90deg,var(--cyan),var(--teal),var(--lime));
+}
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+.chip{padding:10px 13px;border-radius:999px;border:1px solid var(--line);background:white;font-size:.82rem;font-weight:950}
+.empathy{
+  margin-top:38px;padding:25px 28px;border-radius:24px;background:var(--navy);color:white;
+  border-left:8px solid var(--cyan);box-shadow:var(--shadow);position:relative;overflow:hidden;
+}
+.empathy:after{content:"“";position:absolute;right:20px;top:-30px;font:9rem Georgia,serif;color:rgba(255,255,255,.08)}
+.empathy p{margin:0;max-width:850px;font-size:clamp(1.15rem,2vw,1.46rem);font-weight:900;line-height:1.4}
+.hero-visual{
+  min-height:545px;border-radius:34px;
+  background:
+    radial-gradient(circle at 50% 46%,rgba(0,169,224,.19),transparent 28%),
+    linear-gradient(145deg,#0b3048 0%,var(--navy) 68%);
+  box-shadow:var(--shadow);position:relative;overflow:hidden;
+  isolation:isolate;
+}
+.hero-visual:before{
+  content:"";position:absolute;inset:24px;border-radius:28px;
+  border:1px solid rgba(56,214,255,.12);pointer-events:none;z-index:1;
+}
+#constellationCanvas{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.hero-gridline{
+  position:absolute;inset:0;z-index:1;opacity:.32;
+  background:
+    linear-gradient(rgba(56,214,255,.055) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(56,214,255,.055) 1px,transparent 1px);
+  background-size:44px 44px;
+  mask-image:radial-gradient(circle at 50% 50%,black,transparent 75%);
+}
+.core{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:236px;height:236px;border-radius:50%;z-index:5;
+  display:grid;place-items:center;text-align:center;
+  background:
+    radial-gradient(circle at 30% 22%,rgba(94,232,255,.95),var(--cyan) 28%,#067ca7 63%,#0a3b54 100%);
+  box-shadow:
+    0 0 0 18px rgba(0,169,224,.08),
+    0 0 0 38px rgba(0,169,224,.045),
+    0 32px 80px rgba(0,169,224,.28);
+}
+.core:after{
+  content:"";position:absolute;inset:18px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.26);
+}
+.core-brand{position:relative;z-index:2;color:white}
+.core-brand .core-glyph{display:flex;justify-content:center;gap:5px;margin-bottom:13px;transform:skewX(-18deg)}
+.core-brand .core-glyph i{width:9px;height:31px;border-radius:3px;background:#fff;display:block}
+.core-brand strong{display:block;font-size:1.55rem;letter-spacing:-.045em}
+.core-brand span{display:block;margin-top:6px;font-size:.72rem;text-transform:uppercase;letter-spacing:.17em;color:#d8f7ff;font-weight:900}
+.hero-node{
+  position:absolute;z-index:6;width:154px;min-height:86px;
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  padding:15px 16px;border-radius:19px;
+  background:rgba(255,255,255,.96);color:var(--navy);
+  border:1px solid rgba(56,214,255,.35);
+  box-shadow:0 18px 44px rgba(0,0,0,.18);
+  font-size:.8rem;line-height:1.28;font-weight:950;
+  animation:nodeFloat 5.6s ease-in-out infinite;
+}
+.hero-node small{display:block;color:#5b7180;font-size:.66rem;font-weight:800;margin-top:4px;letter-spacing:.02em}
+.hn1{left:50%;top:24px;transform:translateX(-50%);animation-delay:-.8s}
+.hn2{right:20px;top:50%;transform:translateY(-50%);animation-delay:-2.1s}
+.hn3{left:50%;bottom:24px;transform:translateX(-50%);animation-delay:-3.3s}
+.hn4{left:20px;top:50%;transform:translateY(-50%);animation-delay:-4.4s}
+.flow-label{
+  position:absolute;z-index:7;left:50%;bottom:118px;transform:translateX(-50%);
+  padding:7px 11px;border-radius:999px;
+  background:rgba(7,27,45,.76);border:1px solid rgba(56,214,255,.28);
+  color:#dff9ff;font-size:.66rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase;
+  backdrop-filter:blur(8px)
+}
+.hero-scan{
+  position:absolute;left:0;right:0;height:2px;z-index:2;top:0;
+  background:linear-gradient(90deg,transparent,var(--cyan2),transparent);
+  opacity:.42;filter:drop-shadow(0 0 7px var(--cyan2));
+  animation:scan 6.5s linear infinite;
+}
+@keyframes nodeFloat{
+  0%,100%{margin-top:0}
+  50%{margin-top:-7px}
+}
+@keyframes scan{
+  0%{top:8%;opacity:0}
+  12%{opacity:.45}
+  88%{opacity:.45}
+  100%{top:92%;opacity:0}
+}
+
+/* pressure */
+.pressure-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.pressure-card{
+  min-height:320px;background:white;border:1px solid var(--line);border-radius:24px;padding:26px;position:relative;overflow:hidden;transition:.25s ease;
+}
+.pressure-card:hover{transform:translateY(-7px);box-shadow:var(--shadow);border-color:rgba(0,169,224,.35)}
+.pressure-card:after{
+  content:"";position:absolute;width:100px;height:100px;border-radius:50%;right:-38px;top:-38px;
+  background:radial-gradient(circle,rgba(0,169,224,.16),transparent 70%);
+}
+.pressure-card .num{font-size:2.3rem;font-weight:950;color:var(--cyan);line-height:1;margin-bottom:17px}
+.pressure-card p{font-size:.94rem;color:#536570}
+.pressure-card .truth{display:block;margin-top:17px;padding-top:14px;border-top:1px solid var(--line);font-weight:950}
+
+/* three engines */
+.engine-shell{display:grid;grid-template-columns:.84fr 1.16fr;gap:32px;align-items:stretch}
+.engine-thesis{
+  background:linear-gradient(145deg,var(--navy2),var(--navy));color:white;border-radius:30px;padding:35px;
+  box-shadow:var(--shadow);position:relative;overflow:hidden;
+}
+.engine-thesis:after{content:"";position:absolute;width:270px;height:270px;border-radius:50%;right:-145px;bottom:-145px;border:48px solid rgba(0,169,224,.12)}
+.engine-thesis h3{font-size:clamp(2rem,3.4vw,3.7rem);line-height:1.03;letter-spacing:-.045em}
+.engine-thesis p{color:#d6e6ed}
+.engines{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.engine{
+  background:white;border:1px solid var(--line);border-radius:23px;padding:23px;min-height:310px;display:flex;flex-direction:column;
+}
+.engine .tag{font-size:.68rem;color:#008cbc;font-weight:950;letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px}
+.engine h3{font-size:1.35rem}
+.engine p{font-size:.91rem;color:#596a74}
+.engine .metric{margin-top:auto;padding-top:14px;border-top:1px solid var(--line);font-weight:950;color:var(--navy)}
+
+/* flywheel tabs */
+.flywheel{
+  border:1px solid rgba(255,255,255,.14);border-radius:32px;overflow:hidden;
+  background:rgba(255,255,255,.05);box-shadow:0 30px 80px rgba(0,0,0,.25);
+}
+.flywheel-nav{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid rgba(255,255,255,.14)}
+.fly-tab{
+  border:0;border-right:1px solid rgba(255,255,255,.1);padding:19px 16px;background:transparent;color:#b9ced8;
+  font-weight:950;cursor:pointer;text-align:left;
+}
+.fly-tab:last-child{border-right:0}
+.fly-tab.active{background:linear-gradient(90deg,var(--cyan),#0784b0);color:white}
+.fly-panel{padding:38px}
+.fly-panel article{display:none}
+.fly-panel article.active{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+.big-q{font-size:clamp(1.75rem,3vw,2.9rem);line-height:1.13;letter-spacing:-.04em;font-weight:950;max-width:900px;margin-bottom:23px}
+.dark .big-q{color:white}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:27px}
+.mini{border-top:5px solid var(--cyan);padding-top:14px}
+.mini:nth-child(2){border-color:var(--teal)}
+.mini:nth-child(3){border-color:var(--lime)}
+.mini b{display:block;margin-bottom:6px;color:white}
+.mini p{font-size:.9rem;color:#c7d9e1}
+
+/* capacity cockpit */
+.cockpit{
+  border-radius:32px;background:linear-gradient(140deg,#0a2b43,#071b2d);padding:36px;color:white;box-shadow:var(--shadow);
+}
+.cockpit-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:24px}
+.capacity-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.cap{
+  min-height:205px;border-radius:20px;padding:22px;border:1px solid rgba(255,255,255,.13);background:rgba(255,255,255,.055);
+}
+.cap .value{font-size:2rem;font-weight:950;color:var(--cyan2)}
+.cap h3{color:white;margin-top:8px}
+.cap p{font-size:.9rem;color:#d1e2e9}
+.cockpit-side{border-radius:22px;padding:25px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13)}
+.cockpit-side h3{font-size:1.75rem}
+.cockpit-side p,.cockpit-side li{color:#d6e6ec}
+.cockpit-side ul{padding-left:18px}.cockpit-side li{margin-bottom:9px}
+
+/* partner motion */
+.partner-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.partner-card{background:linear-gradient(180deg,#fff,#fbfdfe);border:1px solid var(--line);border-radius:24px;padding:25px;min-height:290px;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}.partner-card:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:rgba(0,169,224,.32)}
+.partner-card .icon{font-size:2rem;color:var(--cyan);font-weight:950}
+.partner-card h3{margin-top:14px;color:var(--navy)}
+.partner-card p{font-size:.92rem;color:#5a6b75}
+.partner-card .foot{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);font-weight:950}
+
+/* market signals */
+.signal-stack{display:grid;gap:13px}
+.signal{
+  display:grid;grid-template-columns:220px 1fr;gap:24px;align-items:center;
+  border:1px solid rgba(255,255,255,.14);border-radius:22px;padding:22px 24px;background:rgba(255,255,255,.055);
+}
+.signal .label{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--lime);font-weight:950}
+.signal h3{font-size:1.35rem;color:white;margin:7px 0}
+.signal p{margin:0;color:#d1e2e9}
+
+/* proof */
+.proof-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.proof{
+  background:white;border:1px solid var(--line);border-radius:24px;padding:25px;min-height:335px;display:flex;flex-direction:column;
+}
+.proof .eyebrow{font-size:.69rem;color:#008fbe;text-transform:uppercase;letter-spacing:.12em;font-weight:950;margin-bottom:15px}
+.proof h3{font-size:1.42rem;color:var(--navy)}
+.proof p{font-size:.92rem;color:#5a6a74}
+.proof .bottom{margin-top:auto;padding-top:14px;border-top:1px solid var(--line);font-weight:950}
+.leader-card{
+  margin-top:18px;border-radius:30px;overflow:hidden;display:grid;grid-template-columns:.82fr 1.18fr;
+  background:linear-gradient(110deg,#eaf8fd,#f2fcfa);border:1px solid var(--line);
+}
+.leader-visual{min-height:330px;background:linear-gradient(145deg,var(--navy),#0d4b68);position:relative;display:grid;place-items:center;overflow:hidden}
+.network{width:230px;height:230px;position:relative}
+.network:before,.network:after{content:"";position:absolute;inset:0;border:2px solid rgba(56,214,255,.45);border-radius:50%}
+.network:after{transform:scale(.68)}
+.network .dot{position:absolute;width:22px;height:22px;border-radius:50%;background:var(--cyan2);box-shadow:0 0 0 8px rgba(56,214,255,.1)}
+.d1{top:5px;left:103px}.d2{right:5px;top:103px}.d3{bottom:5px;left:103px}.d4{left:5px;top:103px}.d5{top:104px;left:104px;background:var(--lime)!important}
+.leader-copy{padding:36px}
+.leader-copy h3{font-size:clamp(2rem,3.5vw,3.8rem);line-height:1.04;letter-spacing:-.045em;color:var(--navy)}
+.link-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.link-pill{display:inline-flex;padding:10px 14px;border-radius:999px;text-decoration:none;font-weight:950;border:1px solid var(--navy);color:var(--navy);background:white}
+
+/* 100 days */
+.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:28px;overflow:hidden}
+.phase{background:white;padding:27px 24px;min-height:395px}
+.phase .days{font-size:.75rem;color:#008fbe;font-weight:950;letter-spacing:.14em;text-transform:uppercase}
+.phase h3{font-size:1.52rem;color:var(--navy);margin:12px 0 14px}
+.phase p,.phase li{font-size:.91rem;color:#596a74}
+.phase ul{padding-left:18px}.phase li{margin-bottom:8px}
+
+/* objection */
+.objection{background:linear-gradient(120deg,var(--navy) 0 61%,#04111d 61% 100%);color:white;padding:0}
+.ob-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:48px;padding:82px 0}
+.ob-title{font-size:clamp(2.3rem,4.6vw,4.8rem);line-height:1.05;letter-spacing:-.055em;font-weight:950}
+.ob-answer{border-left:7px solid var(--cyan);padding-left:25px;align-self:center}
+.ob-answer p{color:#d7e8ee;font-size:1.04rem}
+.ob-answer .close{color:white;font-size:1.2rem;font-weight:950}
+
+/* questions CTA */
+.questions-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}
+.question{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:22px;background:white;padding:25px;min-height:170px}
+.question:after{content:"?";position:absolute;right:14px;top:-8px;font:5.3rem Georgia,serif;color:rgba(0,169,224,.09)}
+.question p{font-size:1.12rem;line-height:1.44;font-weight:950;max-width:88%}
+.cta{
+  margin-top:40px;border-radius:30px;padding:34px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;
+  color:white;background:linear-gradient(110deg,var(--navy),#0b4562 70%,#087fa7);box-shadow:var(--shadow);
+}
+.cta h3{font-size:1.8rem;margin-bottom:5px}.cta p{margin:0;color:#e2f0f4}
+.actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 17px;border-radius:999px;
+  text-decoration:none;font-weight:950;border:1px solid rgba(255,255,255,.65);color:white;background:rgba(255,255,255,.08);
+}
+.btn.primary{background:var(--cyan);color:#04202b;border-color:var(--cyan)}
+.doc-actions{margin-top:13px;display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+.doc-btn{display:inline-flex;padding:9px 13px;border-radius:999px;text-decoration:none;background:#fff;color:var(--navy);font-size:.82rem;font-weight:950}
+
+/* footer */
+footer{padding:46px 0 62px;border-top:1px solid var(--line);background:#fff}
+details{border:1px solid var(--line);border-radius:20px;overflow:hidden;background:white}
+summary{padding:17px 19px;cursor:pointer;font-weight:950;color:var(--navy)}
+.sources{padding:0 20px 20px}.sources li{margin:9px 0;color:#60717b;font-size:.87rem}
+.sources a{color:#007da8;text-underline-offset:3px}.note{font-size:.8rem;color:#7d8b93;margin-top:17px}
+
+.reveal{opacity:0;transform:translateY(20px);transition:.65s ease}
+.reveal.visible{opacity:1;transform:none}
+
+@media(max-width:1040px){
+  .hero-grid,.engine-shell,.cockpit-grid,.leader-card,.ob-grid{grid-template-columns:1fr}
+  .pressure-grid,.proof-grid{grid-template-columns:repeat(2,1fr)}
+  .partner-grid{grid-template-columns:1fr}
+  .engines{grid-template-columns:1fr}
+  .timeline{grid-template-columns:repeat(2,1fr)}
+  .hero-visual{min-height:530px}
+}
+@media(max-width:720px){
+  .wrap{width:min(var(--max),calc(100% - 26px))}
+  .section{padding:68px 0}.navlinks a{display:none}.brand-sub{display:none}.brand-name{font-size:1.35rem}
+  h1{font-size:3.25rem}
+  .pressure-grid,.proof-grid,.capacity-grid,.three,.questions-grid,.timeline{grid-template-columns:1fr}
+  .flywheel-nav{grid-template-columns:1fr}
+  .signal{grid-template-columns:1fr}
+  .cta{grid-template-columns:1fr}.actions,.doc-actions{justify-content:flex-start}
+  .hero-visual{min-height:540px;margin:0}.hero-node{width:132px;min-height:76px;font-size:.72rem}.hn2{right:10px}.hn4{left:10px}.core{width:190px;height:190px}.flow-label{bottom:106px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none}
+}
+@page{size:letter;margin:.42in}
+@media print{
+  header,.print-btn{display:none!important}
+  body{background:#fff!important;color:#111;font-size:9.2pt;padding-top:0!important}
+  .section,.hero{padding:20px 0!important}
+  .wrap{width:100%!important;max-width:none!important}
+  h1{font-size:33pt!important;line-height:.95!important}
+  h2{font-size:21pt!important}
+  .lede{font-size:10.5pt!important}
+  .reveal{opacity:1!important;transform:none!important}
+  .hero-grid,.engine-shell,.cockpit-grid,.leader-card,.ob-grid{grid-template-columns:1fr!important}
+  .hero-visual{min-height:230px!important;transform:none!important;margin:0!important}
+  .hero-visual:before,.hero-gridline,.hero-scan,.hero-node,.flow-label,#constellationCanvas{display:none!important}
+  .core{width:140px;height:140px}.core{position:relative!important;left:auto!important;top:auto!important;transform:none!important;margin:auto}.core-brand strong{font-size:1.25rem}
+  .pressure-grid,.proof-grid{grid-template-columns:repeat(2,1fr)!important}
+  .engines{grid-template-columns:repeat(3,1fr)!important}
+  .timeline{grid-template-columns:repeat(2,1fr)!important}
+  .flywheel-nav{display:none!important}
+  .fly-panel article{display:block!important;border-bottom:1px solid #ccc;padding-bottom:12px;margin-bottom:12px;break-inside:avoid}
+  .three{grid-template-columns:repeat(3,1fr)!important}
+  .dark,.cockpit,.engine-thesis,.objection{background:#fff!important;color:#111!important;border:1px solid #bbb!important;box-shadow:none!important}
+  .dark p,.dark h2,.dark h3,.dark .lede,.dark .big-q,.dark .mini b,.dark .mini p,
+  .cockpit p,.cockpit h3,.cockpit li,.objection p,.objection .ob-title,.objection .close{color:#111!important}
+  .signal,.cap,.cockpit-side{background:#fff!important;border:1px solid #bbb!important}
+  .signal h3,.signal p{color:#111!important}
+  .cta{background:#fff!important;color:#111!important;border:2px solid var(--navy)!important;box-shadow:none!important}
+  .cta p{color:#111!important}.actions,.doc-actions{display:none!important}
+  .pressure-card,.proof,.engine,.phase,.question,.partner-card,.signal,.leader-card{break-inside:avoid}
+  details{display:block!important}details[open] .sources{display:block!important}
+  summary{list-style:none}footer{padding:16px 0}a{text-decoration:none}
+}
+</style>
+</head>
+<body>
+<header class="site-header" id="siteHeader">
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="Presidio candidate vision home">
+      <span class="brand-lockup" aria-label="Presidio">
+        <span class="brand-glyph" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="brand-name">Presidio</span>
+      </span>
+      <span class="brand-sub">VP • WORKFORCE AI & PRODUCTIVITY • CANDIDATE VISION</span>
+    </a>
+    <nav class="navlinks">
+      <a href="#pressure">Pressure</a>
+      <a href="#practice">Practice</a>
+      <a href="#proof">Why Russ</a>
+      <a href="#plan">100 Days</a>
+      <button class="print-btn" onclick="openPrintBrief()">Print brief</button>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="kicker">Russell Dudek • VP Workforce AI & Productivity</div>
+      <h1>
+        <span class="line">Win the technical decision.</span>
+        <span class="line gradient-text">Deliver the human outcome.</span>
+        <span class="line">Scale the practice.</span>
+      </h1>
+      <p class="lede">
+        My vision is to turn Presidio's Workforce AI and Microsoft Productivity demand into one integrated growth engine:
+        presales that earns the Technical Win, delivery that proves customer value, partners that accelerate the field, and talent capacity aligned to the opportunity.
+      </p>
+      <div class="chips">
+        <span class="chip">Workforce AI presales</span>
+        <span class="chip">AI delivery</span>
+        <span class="chip">Microsoft productivity</span>
+        <span class="chip">Partner GTM</span>
+        <span class="chip">Talent evolution</span>
+      </div>
+      <div class="empathy reveal">
+        <p>
+          It probably feels like the market is changing faster than any capacity plan can keep up with.
+          The risk is not lack of demand. It is demand outrunning talent, presales and delivery drifting apart, and partner excitement failing to become customer outcomes.
+        </p>
+      </div>
+    </div>
+
+    <aside class="hero-visual reveal" aria-label="Workforce AI practice operating system">
+      <canvas id="constellationCanvas" aria-hidden="true"></canvas>
+      <div class="hero-gridline" aria-hidden="true"></div>
+      <div class="hero-scan" aria-hidden="true"></div>
+      <div class="hero-node hn1">Workforce AI Presales<small>Shape demand • technical win</small></div>
+      <div class="hero-node hn2">AI Delivery<small>Proof • adoption • margin</small></div>
+      <div class="hero-node hn3">Microsoft Productivity<small>M365 • Copilot • Teams • Viva</small></div>
+      <div class="hero-node hn4">Partners + Regional Sales<small>Co-sell • pipeline • field pull</small></div>
+      <div class="core">
+        <div class="core-brand">
+          <div class="core-glyph" aria-hidden="true"><i></i><i></i><i></i></div>
+          <strong>Presidio</strong>
+          <span>Practice OS</span>
+        </div>
+      </div>
+      <div class="flow-label">Signal → Win → Deliver → Expand</div>
+    </aside>
+  </div>
+</section>
+
+<section class="section mist" id="pressure">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="kicker">The pressure I see</div>
+      <h2>The practice challenge is not one thing. It is four systems moving at once.</h2>
+      <p class="lede">The role description is unusually clear: this leader owns people, technical win, delivery quality, partner leverage and portfolio economics simultaneously.</p>
+    </div>
+    <div class="pressure-grid reveal">
+      <article class="pressure-card"><div class="num">01</div><h3>Demand vs. capacity</h3><p>AI and productivity demand can change faster than hiring, promotion and certification cycles. Capacity must be actively shaped against market opportunity.</p><span class="truth">“Where are we over-covered, under-covered or one departure away from pain?”</span></article>
+      <article class="pressure-card"><div class="num">02</div><h3>Presales vs. delivery</h3><p>The best technical win can still create a bad client experience if scope, assumptions and handoffs do not survive the move from proposal to delivery.</p><span class="truth">“Did we sell an architecture the delivery team can win with?”</span></article>
+      <article class="pressure-card"><div class="num">03</div><h3>Partner energy vs. pipeline</h3><p>Executive relationships, MDF, incentives, specializations and co-sell motion create leverage only when they convert into field behavior and faster deals.</p><span class="truth">“Which partner motion is actually moving pipeline?”</span></article>
+      <article class="pressure-card"><div class="num">04</div><h3>AI access vs. customer value</h3><p>Copilot seats, agents and pilots do not guarantee adoption. Customers need workflow fit, governance, behavior change and proof that work is actually better.</p><span class="truth">“What would the customer miss if the solution disappeared?”</span></article>
+    </div>
+  </div>
+</section>
+
+<section class="section white" id="practice">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="kicker">One practice, three engines</div>
+      <h2>Separate expertise. Shared customer promise.</h2>
+      <p class="lede">The organizational design should preserve specialization while creating one commercial and delivery rhythm.</p>
+    </div>
+
+    <div class="engine-shell">
+      <aside class="engine-thesis reveal">
+        <h3>One scoreboard. One leadership cadence. One customer outcome.</h3>
+        <p>
+          Workforce AI Presales, Workforce AI Delivery and Microsoft Productivity Presales should not behave like three adjacent teams.
+          They should operate as one practice with shared account hypotheses, capacity visibility, delivery learning and partner motions.
+        </p>
+      </aside>
+      <div class="engines reveal">
+        <article class="engine"><div class="tag">Engine 01</div><h3>Workforce AI Presales</h3><p>Shape business pain into credible architecture, governed use cases, adoption logic and value hypotheses that regional sellers can take into executive conversations.</p><div class="metric">Win rate • attach rate • cycle time • technical win</div></article>
+        <article class="engine"><div class="tag">Engine 02</div><h3>Workforce AI Delivery</h3><p>Turn proposals into production outcomes with scope discipline, executive visibility, adoption measures, delivery quality and feedback that improves the next sale.</p><div class="metric">Margin • quality • adoption • referenceability</div></article>
+        <article class="engine"><div class="tag">Engine 03</div><h3>Microsoft Productivity Presales</h3><p>Connect M365, Copilot, Teams, Viva and adjacent AI capabilities to work redesign, governance and measurable employee value—not feature tours.</p><div class="metric">Pipeline • conversion • services attach • expansion</div></article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section dark">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="kicker">Practice growth flywheel</div>
+      <h2>Shape demand. Win technically. Deliver proof. Expand with evidence.</h2>
+      <p class="lede">The strongest practice creates a closed loop between what the market wants, what Presidio can win, what delivery learns, and what partners can amplify.</p>
+    </div>
+
+    <div class="flywheel reveal">
+      <div class="flywheel-nav">
+        <button class="fly-tab active" data-target="shape">1. Shape Demand</button>
+        <button class="fly-tab" data-target="win">2. Earn Technical Win</button>
+        <button class="fly-tab" data-target="deliver">3. Deliver Proof</button>
+        <button class="fly-tab" data-target="expand">4. Expand the Account</button>
+      </div>
+      <div class="fly-panel">
+        <article id="shape" class="active">
+          <div class="big-q">“What customer problem is urgent enough to fund—and specific enough to solve?”</div>
+          <p>Equip regional sales and partner field teams with account hypotheses, executive workshops, use-case patterns and value narratives grounded in business friction.</p>
+          <div class="three"><div class="mini"><b>Field enablement</b><p>Vertical stories, discovery guides, qualification signals and executive questions.</p></div><div class="mini"><b>Partner co-sell</b><p>Joint account mapping, campaign plays, workshops and executive sponsorship.</p></div><div class="mini"><b>Practice signal</b><p>Demand themes become hiring, enablement and portfolio input.</p></div></div>
+        </article>
+        <article id="win">
+          <div class="big-q">“What has to be true for the customer, seller, partner and delivery leader to all believe this plan can work?”</div>
+          <p>Standardize the quality of discovery, solution architecture, scope assumptions, risk identification and handoff readiness while preserving room for customer-specific design.</p>
+          <div class="three"><div class="mini"><b>Technical credibility</b><p>Architecture, security, data, integration, governance and adoption aligned.</p></div><div class="mini"><b>Commercial clarity</b><p>Business outcome, scope boundaries, services attach and value logic.</p></div><div class="mini"><b>Delivery readiness</b><p>Named dependencies, acceptance criteria and clean ownership before signature.</p></div></div>
+        </article>
+        <article id="deliver">
+          <div class="big-q">“Are we measuring project completion—or the customer outcome they thought they were buying?”</div>
+          <p>Create visible delivery health around quality, margin, adoption, executive confidence and lessons that flow back into presales and partner conversations.</p>
+          <div class="three"><div class="mini"><b>Delivery health</b><p>Scope, schedule, quality, margin, blockers and customer sentiment.</p></div><div class="mini"><b>Adoption</b><p>Active use, workflow penetration, confidence, training and behavior change.</p></div><div class="mini"><b>Learning loop</b><p>Patterns, objections and accelerators return to presales.</p></div></div>
+        </article>
+        <article id="expand">
+          <div class="big-q">“What did the first win teach us about the next function, workflow or business unit?”</div>
+          <p>Use evidence from production to create referenceability, expansion roadmaps, partner stories and repeatable patterns that lower the cost of the next sale.</p>
+          <div class="three"><div class="mini"><b>Account expansion</b><p>Outcome review, adjacent workflow map and next-wave business case.</p></div><div class="mini"><b>Market proof</b><p>References, anonymized patterns, executive stories and repeatable offers.</p></div><div class="mini"><b>Partner leverage</b><p>Joint success evidence strengthens co-sell and field confidence.</p></div></div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section mist">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="kicker">Capacity-to-opportunity cockpit</div>
+      <h2>Talent capacity should follow market opportunity before the quarter forces the decision.</h2>
+      <p class="lede">A VP-level operating view should make revenue opportunity, skill coverage, bench risk, delivery load and recruiting needs visible together.</p>
+    </div>
+    <div class="cockpit reveal">
+      <div class="cockpit-grid">
+        <div class="capacity-grid">
+          <div class="cap"><div class="value">Market</div><h3>Pipeline by solution motion</h3><p>Qualified demand, stage, technical complexity, services mix, region and partner source.</p></div>
+          <div class="cap"><div class="value">People</div><h3>Skills & coverage</h3><p>SA and delivery capability by solution, certification, geography, seniority and succession risk.</p></div>
+          <div class="cap"><div class="value">Flow</div><h3>Utilization & handoff</h3><p>Presales load, delivery allocation, time-to-staff, bench, project overlap and escalation age.</p></div>
+          <div class="cap"><div class="value">Economics</div><h3>Revenue & gross profit</h3><p>Bookings, backlog, margin, forecast quality, attach rate, incentive capture and partner investment.</p></div>
+        </div>
+        <aside class="cockpit-side">
+          <h3>Weekly leadership question</h3>
+          <p><strong>Where should the next scarce hour of technical talent go?</strong></p>
+          <ul>
+            <li>Highest-probability strategic opportunities</li>
+            <li>Delivery risks that threaten referenceability</li>
+            <li>Capabilities where demand is outrunning bench strength</li>
+            <li>Partner motions with real co-sell acceleration</li>
+            <li>Talent development that creates the next line of leaders</li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section white">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="kicker">Partner operating system</div>
+      <h2>Executive relationships matter most when they change field behavior.</h2>
+      <p class="lede">The role is not simply alliance management. It is converting strategic partner relationships into customer relevance, technical confidence and faster growth.</p>
+    </div>
+    <div class="partner-grid reveal">
+      <article class="partner-card"><div class="icon">↗</div><h3>Joint GTM</h3><p>Align account priorities, target workloads, field plays, campaigns and executive sponsorship across Microsoft, Anthropic and adjacent ecosystem partners.</p><div class="foot">Measure: sourced pipeline • influence • conversion • velocity</div></article>
+      <article class="partner-card"><div class="icon">◎</div><h3>Capability credibility</h3><p>Use certification, specialization, technical communities and delivery evidence to make Presidio the partner field teams trust for consequential work.</p><div class="foot">Measure: certifications • partner referrals • technical win • references</div></article>
+      <article class="partner-card"><div class="icon">$</div><h3>Program economics</h3><p>Treat MDF, incentives, investments and tier requirements as a portfolio—funding the enablement and demand motions with the clearest return.</p><div class="foot">Measure: incentive capture • MDF ROI • attach • gross profit</div></article>
+    </div>
+  </div>
+</section>
+
+<section class="section dark">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="kicker">The competitive moment</div>
+      <h2>The market is shifting from AI access to AI operating advantage.</h2>
+      <p class="lede">Presidio's opportunity is to connect AI strategy, infrastructure, security, implementation, workforce adoption and managed operations in one story—and prove it in delivery.</p>
+    </div>
+    <div class="signal-stack reveal">
+      <article class="signal"><div><div class="label">Presidio signal</div><h3>AI Blueprint + Lighthouse + P.A.T.H.</h3></div><p>Presidio's July 2026 investment connects strategy, production validation and scale—and says the firm's own AI Studio experience informs its approach to adoption and operational friction.</p></article>
+      <article class="signal"><div><div class="label">Human AI signal</div><h3>Human outcome is already part of the brand.</h3></div><p>Presidio's Human AI approach explicitly focuses on helping people work faster, better and smarter while keeping human steering and validation in the loop.</p></article>
+      <article class="signal"><div><div class="label">Market signal</div><h3>Copilot access does not equal sustained use.</h3></div><p>Large-scale enterprise rollouts show uneven adoption across roles and departments, reinforcing the need for role-specific use cases, training, trust and workflow design.</p></article>
+      <article class="signal"><div><div class="label">Competitor signal</div><h3>Large consultancies are industrializing AI talent and alliances.</h3></div><p>Accenture's Anthropic business group includes plans to train roughly 30,000 employees, raising the bar for partner-led enablement, specialist capacity and market visibility.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="section white" id="proof">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="kicker">Why my background is relevant</div>
+      <h2>I have led where technical credibility, operating pressure and human adoption all have to work at once.</h2>
+      <p class="lede">My strength is not standing outside the system with a framework. It is building the operating rhythm that lets people, technology, customers and metrics move together.</p>
+    </div>
+    <div class="proof-grid reveal">
+      <article class="proof"><div class="eyebrow">Leadership at scale</div><h3>Amazon operating discipline</h3><p>Launched and led high-pressure operations with customer-backward metrics, labor planning, visible escalation, Lean and Gemba practices, and cross-functional innovation.</p><div class="bottom">I know how to turn targets into daily leadership behavior.</div></article>
+      <article class="proof"><div class="eyebrow">AI + robotics</div><h3>From machine signal to customer outcome</h3><p>At Vape-Jet, I operate across AI-first transformation, machine vision, production, engineering issue flow, customer success, ERP/Jira systems and a fleet context of roughly 1,000 robots.</p><div class="bottom">Technical systems only matter when the operating model can absorb them.</div></article>
+      <article class="proof"><div class="eyebrow">AI practice thinking</div><h3>Builder, advisor, translator</h3><p>Through DudeWorth, Core and DudexOS, I design AI-readiness frameworks, agentic workflows, governance rails, decision loops and practical operating patterns.</p><div class="bottom">I can move between executive narrative and implementation mechanism.</div></article>
+      <article class="proof"><div class="eyebrow">Technical depth</div><h3>Engineering credibility without jargon theater</h3><p>Advanced electronics, high-reliability technical programs, autonomous systems and AI give me the range to challenge assumptions while keeping the customer story legible.</p><div class="bottom">I enjoy helping technical people win without making business leaders decode the answer.</div></article>
+    </div>
+
+    <div class="leader-card reveal">
+      <div class="leader-visual">
+        <div class="network"><span class="dot d1"></span><span class="dot d2"></span><span class="dot d3"></span><span class="dot d4"></span><span class="dot d5"></span></div>
+      </div>
+      <div class="leader-copy">
+        <div class="kicker">My leadership philosophy</div>
+        <h3>Make the system visible. Make ownership clear. Grow leaders who can disagree with you.</h3>
+        <p>
+          This role calls for transparent leadership across distributed presales and delivery teams.
+          My default is visible metrics, direct expectations, early escalation, frequent coaching and enough psychological safety for experts to surface bad news before it becomes expensive.
+        </p>
+        <p>
+          Talent evolution is not a recruiting project. It is the continuous system connecting hiring, skill visibility, coaching, promotion, succession, utilization and the future shape of customer demand.
+        </p>
+        <div class="link-row">
+          <a class="link-pill" href="https://www.linkedin.com/in/russelldudek" target="_blank" rel="noopener">LinkedIn profile</a>
+          <a class="link-pill" href="resume.html" target="_blank">Role-aligned resume</a>
+          <a class="link-pill" href="cover-letter.html" target="_blank">Cover letter</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section mist" id="plan">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="kicker">First 100 days</div>
+      <h2>Learn the field. Align the three teams. Focus the partner motion. Create one scoreboard.</h2>
+    </div>
+    <div class="timeline reveal">
+      <article class="phase"><div class="days">Days 0–25</div><h3>Listen in stereo</h3><p>Hear the market and the delivery floor at the same time.</p><ul><li>Join strategic deal reviews and delivery health reviews</li><li>Meet Microsoft, Anthropic and priority partner leaders</li><li>Map skill coverage, succession, attrition risk and recruiting flow</li><li>Review pipeline, margin, utilization and technical win patterns</li></ul></article>
+      <article class="phase"><div class="days">Days 26–50</div><h3>Unify the practice rhythm</h3><p>Create shared decision rights and a visible operating cadence across the three teams.</p><ul><li>One practice scorecard</li><li>Presales-to-delivery handoff standard</li><li>Capacity-to-opportunity review</li><li>Talent evolution priorities by capability gap</li></ul></article>
+      <article class="phase"><div class="days">Days 51–75</div><h3>Focus the growth motion</h3><p>Concentrate field energy on the plays Presidio is best positioned to win.</p><ul><li>Joint account hypotheses with regional sales</li><li>Partner co-sell plays and executive cadence</li><li>Reusable discovery and technical-win patterns</li><li>Delivery proof fed into GTM narratives</li></ul></article>
+      <article class="phase"><div class="days">Days 76–100</div><h3>Scale what is working</h3><p>Use evidence to invest, recruit, promote and expand with discipline.</p><ul><li>Quarterly practice business review</li><li>Partner investment ROI</li><li>Hiring and promotion plan tied to demand shape</li><li>Referenceability and expansion pipeline from delivery success</li></ul></article>
+    </div>
+  </div>
+</section>
+
+<section class="section objection">
+  <div class="wrap ob-grid">
+    <div class="ob-title reveal">“You may be thinking: strong AI operator—but has Russ run a Microsoft productivity practice this large?”</div>
+    <div class="ob-answer reveal">
+      <p><strong>That is the fair question, and I would not blur the answer.</strong></p>
+      <p>
+        I have not held this exact title or inherited this exact partner-and-practice structure. My case is the pattern beneath it:
+        I have built and led cross-functional operating systems, scaled teams under customer pressure, translated complex technology into practical value,
+        worked across AI, robotics, cloud-adjacent systems and enterprise operations, and created leadership cadences where accountability and learning can coexist.
+      </p>
+      <p>
+        I would come in ready to learn Presidio's Microsoft and partner machinery quickly, while bringing uncommon strength in the harder connective work:
+        aligning presales with delivery, matching talent capacity to opportunity, turning AI into human workflow value, and making the practice economics visible enough to act on.
+      </p>
+      <p class="close">I would not try to out-feature the experts. I would build the system that helps experts win together, deliver better and grow faster.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section white">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="kicker">The conversation I would bring</div>
+      <h2>Four questions worth pressure-testing together.</h2>
+    </div>
+    <div class="questions-grid reveal">
+      <div class="question"><p>Where is the greatest friction today between Workforce AI presales, delivery and Microsoft Productivity—and what does that friction cost the customer or the practice?</p></div>
+      <div class="question"><p>What would have to be true for regional sellers to pull this practice into opportunities earlier, rather than calling only when a product or vendor is already named?</p></div>
+      <div class="question"><p>Which partner relationship has the greatest unrealized potential today: stronger executive alignment, better field co-sell, more technical capacity or clearer customer proof?</p></div>
+      <div class="question"><p>One year from now, which three numbers would convince leadership that this practice is stronger—not simply larger?</p></div>
+    </div>
+
+    <div class="cta reveal">
+      <div>
+        <h3>Russell Dudek</h3>
+        <p>AI-first operator • technical translator • practice builder • Pittsburgh, Pennsylvania</p>
+      </div>
+      <div>
+        <div class="actions">
+          <a class="btn primary" href="mailto:russelldudek@gmail.com?subject=Presidio%20Workforce%20AI%20%26%20Productivity%20Conversation">Start a conversation</a>
+          <a class="btn" href="https://www.linkedin.com/in/russelldudek" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+        <div class="doc-actions">
+          <a class="doc-btn" href="resume.html" target="_blank">Resume</a>
+          <a class="doc-btn" href="cover-letter.html" target="_blank">Cover letter</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <details>
+      <summary>Research basis, market signals and source notes</summary>
+      <div class="sources">
+        <ol>
+          <li><a href="https://www.presidio.com/" target="_blank" rel="noopener">Presidio corporate site</a> — AI, Human AI, Total Experience, services, partners and company positioning.</li>
+          <li><a href="https://www.presidio.com/presidio-ai-blueprint/" target="_blank" rel="noopener">Presidio AI Blueprint</a> — Clarify, Realize, Scale; Trust Ceiling; AI Graveyard; value realization, governance and adoption.</li>
+          <li><a href="https://www.presidio.com/news/presidio-addresses-ai-value-paradox-with-new-investments/" target="_blank" rel="noopener">Presidio July 2026 AI investment announcement</a> — Lighthouse, P.A.T.H., AI Blueprint and internal AI Studio operating experience.</li>
+          <li><a href="https://www.presidio.com/solutions/hai/" target="_blank" rel="noopener">Presidio Human AI (HAI)</a> — human-centric AI, acceleration, quality, resource optimization and human validation.</li>
+          <li><a href="https://www.sfchronicle.com/sf/article/ai-city-worker-san-francisco-22326139.php" target="_blank" rel="noopener">San Francisco Chronicle: enterprise-scale Copilot adoption signal</a> — access and adoption varied substantially by department and role.</li>
+          <li><a href="https://arxiv.org/abs/2602.18576" target="_blank" rel="noopener">Generative AI in Knowledge Work: Microsoft 365 Copilot acceptance study</a> — role-specific usefulness, routinization, training and governance.</li>
+          <li><a href="https://arxiv.org/abs/2605.23958" target="_blank" rel="noopener">AI in the Enterprise: How People Use M365 Copilot Chat</a> — broad but uneven usage patterns across work activities and occupations.</li>
+          <li><a href="https://www.businessinsider.com/accenture-anthrophic-open-ai-deal-claude-consulting-2025-12" target="_blank" rel="noopener">Accenture–Anthropic business group market signal</a> — large-scale specialist enablement and enterprise AI consulting competition.</li>
+        </ol>
+        <p class="note">
+          Prepared from the supplied Presidio job posting, public Presidio materials and Russell Dudek's documented professional experience.
+          The practice model, scorecards and 100-day plan are candidate hypotheses for discussion—not claims about Presidio's confidential pipeline, team performance, partner economics or internal operating data.
+          Presidio marks belong to their respective owners.
+        </p>
+      </div>
+    </details>
+  </div>
+</footer>
+
+<script>
+const tabs=document.querySelectorAll('.fly-tab');
+const panels=document.querySelectorAll('.fly-panel article');
+tabs.forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    tabs.forEach(t=>t.classList.remove('active'));
+    panels.forEach(p=>p.classList.remove('active'));
+    tab.classList.add('active');
+    const target=document.getElementById(tab.dataset.target);
+    if(target) target.classList.add('active');
+  });
+});
+const revealEls=document.querySelectorAll('.reveal');
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:.11});
+revealEls.forEach(el=>observer.observe(el));
+
+const siteHeader=document.getElementById('siteHeader');
+let scrollTick=false;
+window.addEventListener('scroll',()=>{
+  if(scrollTick) return;
+  scrollTick=true;
+  requestAnimationFrame(()=>{
+    siteHeader.classList.toggle('scrolled',window.scrollY>10);
+    scrollTick=false;
+  });
+},{passive:true});
+
+(function animateConstellation(){
+  const canvas=document.getElementById('constellationCanvas');
+  const host=canvas?.parentElement;
+  if(!canvas||!host) return;
+  const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const ctx=canvas.getContext('2d');
+  let w=0,h=0,dpr=Math.min(window.devicePixelRatio||1,2),raf=0,active=true;
+  const pts=Array.from({length:34},(_,i)=>({
+    x:Math.random(),y:Math.random(),
+    vx:(Math.random()-.5)*.00016,
+    vy:(Math.random()-.5)*.00016,
+    r:1+Math.random()*1.6,
+    phase:Math.random()*Math.PI*2
+  }));
+  function resize(){
+    const r=host.getBoundingClientRect();w=Math.max(1,r.width);h=Math.max(1,r.height);
+    canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);
+    canvas.style.width=w+'px';canvas.style.height=h+'px';
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+  }
+  function draw(t=0){
+    ctx.clearRect(0,0,w,h);
+    const cx=w*.5,cy=h*.5;
+    pts.forEach((p,i)=>{
+      if(!reduced){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>1)p.vx*=-1;if(p.y<0||p.y>1)p.vy*=-1}
+      const x=p.x*w,y=p.y*h;
+      const a=.23+.18*Math.sin(t*.0012+p.phase);
+      ctx.beginPath();ctx.arc(x,y,p.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(56,214,255,${a})`;ctx.fill();
+      const dc=Math.hypot(x-cx,y-cy);
+      if(dc<215){
+        ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(cx,cy);
+        ctx.strokeStyle=`rgba(0,214,199,${.12*(1-dc/215)})`;ctx.lineWidth=.8;ctx.stroke();
+      }
+      for(let j=i+1;j<pts.length;j++){
+        const q=pts[j],qx=q.x*w,qy=q.y*h,d=Math.hypot(x-qx,y-qy);
+        if(d<86){
+          ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(qx,qy);
+          ctx.strokeStyle=`rgba(56,214,255,${.08*(1-d/86)})`;ctx.lineWidth=.65;ctx.stroke();
+        }
+      }
+    });
+    if(active&&!reduced) raf=requestAnimationFrame(draw);
+  }
+  resize();draw();
+  window.addEventListener('resize',()=>{resize();if(reduced)draw()},{passive:true});
+  const io=new IntersectionObserver(([e])=>{
+    active=e.isIntersecting;
+    if(active&&!reduced){cancelAnimationFrame(raf);raf=requestAnimationFrame(draw)}
+    else cancelAnimationFrame(raf);
+  },{threshold:.05});
+  io.observe(host);
+})();
+
+function openPrintBrief(){
+  document.querySelector('details').setAttribute('open','');
+  window.print();
+}
+</script>
+</body>
+</html>
