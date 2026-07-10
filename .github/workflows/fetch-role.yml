@@ -1,0 +1,42 @@
+name: Fetch Presidio Role
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch UKG posting
+        shell: bash
+        run: |
+          cat > payload.json <<'JSON'
+          {
+            "opportunitySearch": {
+              "Top": 500,
+              "Skip": 0,
+              "QueryString": "",
+              "OrderBy": [{"Value":"postedDateDesc","PropertyName":"PostedDate","Ascending":false}],
+              "Filters": [
+                {"t":"TermsSearchFilterDto","fieldName":4,"extra":null,"values":[]},
+                {"t":"TermsSearchFilterDto","fieldName":5,"extra":null,"values":[]},
+                {"t":"TermsSearchFilterDto","fieldName":6,"extra":null,"values":[]},
+                {"t":"TermsSearchFilterDto","fieldName":37,"extra":null,"values":[]}
+              ]
+            },
+            "matchCriteria": {
+              "PreferredJobs":[],"Educations":[],"LicenseAndCertifications":[],"Skills":[],"hasNoLicenses":false,"SkippedSkills":[]
+            }
+          }
+          JSON
+          curl -sS -X POST \
+            -H 'Accept: application/json' \
+            -H 'Content-Type: application/json' \
+            --data @payload.json \
+            'https://recruiting.ultipro.com/PRE1019PRSD/JobBoard/4c05f321-903e-43d5-a4c0-5d9dd55dc34d/JobBoardView/LoadSearchResults' \
+            -o results.json
+          echo '--- MATCH ---'
+          jq '.opportunities[] | select(.Id == "ed167829-e71b-4771-8216-9326404d6f0a")' results.json
+          echo '--- TOTAL ---'
+          jq '.totalCount' results.json
