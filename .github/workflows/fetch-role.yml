@@ -21,22 +21,21 @@ jobs:
           cat .deploy/resume_*.txt | tr -d '\n' | base64 -d | gzip -d > resume.html
           cat .deploy/cover_*.txt | tr -d '\n' | base64 -d | gzip -d > cover-letter.html
 
-          curl -sSL 'https://mms.businesswire.com/media/20221013005091/en/1247950/4/LOGO-Presidio-512-square.jpg' -o presidio_logo.jpg
+          LOGO_URL='https://mms.businesswire.com/media/20221013005091/en/1247950/4/LOGO-Presidio-512-square.jpg'
+          sed -i "s#presidio_logo.jpg#$LOGO_URL#g" index.html resume.html cover-letter.html
 
           test -s index.html
           test -s resume.html
           test -s cover-letter.html
-          test -s presidio_logo.jpg
 
       - name: Clean research scaffolding and publish
         shell: bash
         run: |
           rm -rf .deploy
           rm -f job.json job_page.html job_description.txt research-link.md README.md
-          rm -f .github/workflows/fetch-role.yml
 
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -A
-          git commit -m 'Launch Presidio candidate vision site [skip ci]'
+          git commit -m 'Publish Presidio candidate vision site [skip ci]'
           git push
