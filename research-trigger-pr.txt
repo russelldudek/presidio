@@ -1,1 +1,1 @@
-trigger final candidate site publish
+trigger final candidate site publish retry
