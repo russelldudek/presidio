@@ -17,7 +17,8 @@ jobs:
       - name: Extract embedded site package and publish
         shell: bash
         run: |
-          awk '/^B64$/{flag=!flag; next} flag' .github/workflows/research-job.yml > /tmp/site.b64
+          sed -n "/<<'B64'/,/^B64$/p" .github/workflows/research-job.yml | sed '1d;$d' > /tmp/site.b64
+          test -s /tmp/site.b64
           base64 -d /tmp/site.b64 > /tmp/site.zip
           unzip -o /tmp/site.zip -d .
           rm -f reader-link.md trigger.txt
