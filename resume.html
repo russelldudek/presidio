@@ -1,1 +1,182 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Russell Dudek | Presidio Role-Aligned Resume</title><style>body{margin:0;background:#071b2d;color:white;font-family:Arial,sans-serif;display:grid;place-items:center;min-height:100vh}.loading{text-align:center}.mark{width:54px;height:54px;border:5px solid rgba(255,255,255,.18);border-top-color:#00a9e0;border-radius:50%;margin:0 auto 18px;animation:s 1s linear infinite}@keyframes s{to{transform:rotate(360deg)}}</style></head><body><div class="loading"><div class="mark"></div><strong>Loading role-aligned resume…</strong></div><script type="module">const u='https://raw.githubusercontent.com/russelldudek/presidio/main/.deploy/resume_01.txt';const r=await fetch(u);if(!r.ok)throw new Error('Unable to load resume');const b64=(await r.text()).replace(/\s/g,'');const bytes=Uint8Array.from(atob(b64),c=>c.charCodeAt(0));const stream=new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'));let html=await new Response(stream).text();html=html.replaceAll('presidio_logo.jpg','https://mms.businesswire.com/media/20221013005091/en/1247950/4/LOGO-Presidio-512-square.jpg');document.open();document.write(html);document.close();</script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Russell Dudek | Presidio Role-Aligned Resume</title>
+<style>
+:root{--navy:#071b2d;--cyan:#00a9e0;--teal:#00d6c7;--lime:#b5e853;--ink:#10202c;--muted:#5c6d78;--line:#d9e7ee;--mist:#f3f8fb}
+*{box-sizing:border-box}body{margin:0;background:#eaf2f6;color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.33}
+.toolbar{position:sticky;top:0;z-index:10;display:flex;justify-content:center;gap:10px;padding:12px;background:rgba(7,27,45,.96);box-shadow:0 8px 24px rgba(0,0,0,.2)}
+.toolbar button,.toolbar a{border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:10px 15px;background:transparent;color:white;text-decoration:none;font-weight:800;cursor:pointer}
+.toolbar .primary{background:var(--cyan);color:var(--navy);border-color:var(--cyan)}
+.resume{max-width:8.5in;margin:24px auto;box-shadow:0 22px 60px rgba(7,27,45,.18)}
+.page{width:8.5in;min-height:11in;background:white;padding:.48in .56in .42in;position:relative;page-break-after:always}
+.page:last-child{page-break-after:auto}
+.top{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;padding-bottom:12px;border-bottom:4px solid var(--cyan)}
+.name{font-size:25pt;letter-spacing:-.04em;font-weight:950;color:var(--navy);line-height:.95}
+.role{margin-top:7px;font-size:10.2pt;font-weight:900;color:#0086b4}
+.contact{text-align:right;font-size:8.3pt;color:var(--muted)}
+.contact a{color:#007fae;text-decoration:none}
+h2{font-size:10.6pt;margin:12px 0 5px;color:var(--navy);letter-spacing:.08em;text-transform:uppercase;border-bottom:1px solid var(--line);padding-bottom:3px}
+h3{font-size:9.7pt;margin:7px 0 1px;color:var(--navy)}
+p{font-size:8.45pt;margin:0 0 4px}
+.summary{font-size:8.7pt;line-height:1.4}
+.cap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:5px}
+.cap{background:var(--mist);border-left:3px solid var(--cyan);padding:6px 7px;font-size:8pt;font-weight:850}
+.job{margin-top:6px;break-inside:avoid}
+.jobline{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.jobline strong{font-size:9.4pt}.jobline span{font-size:8.1pt;color:#50636f;font-weight:700;white-space:nowrap}
+.sub{font-size:8pt;color:#5c6d78;font-style:italic;margin:1px 0 3px}
+ul{margin:2px 0 0 14px;padding:0}
+li{font-size:8pt;margin:0 0 2.1px;line-height:1.29}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.callout{margin-top:10px;padding:9px 11px;border-radius:8px;background:linear-gradient(90deg,#edf9fd,#f1fcf8);border:1px solid var(--line);font-size:8.2pt}
+.footer{position:absolute;left:.56in;right:.56in;bottom:.22in;display:flex;justify-content:space-between;color:#73848e;font-size:7pt}
+@media(max-width:900px){.resume{margin:0;box-shadow:none}.page{width:100%;min-height:auto;padding:24px}.top{grid-template-columns:1fr}.contact{text-align:left}.two-col{grid-template-columns:1fr}}
+@page{size:letter;margin:0}
+@media print{
+  body{background:white}.toolbar{display:none!important}.resume{margin:0;max-width:none;box-shadow:none}
+  .page{width:8.5in;height:11in;min-height:11in;overflow:hidden;padding:.43in .52in .38in}
+  .page:last-child{page-break-after:auto}
+  a{color:inherit;text-decoration:none}
+  .footer{bottom:.17in;left:.52in;right:.52in}
+}
+</style>
+</head>
+<body>
+<div class="toolbar">
+  <button class="primary" onclick="window.print()">Print / Save as PDF</button>
+  <a href="index.html">Back to candidate vision</a>
+  <a href="https://www.linkedin.com/in/russelldudek" target="_blank" rel="noopener">LinkedIn</a>
+</div>
+
+<main class="resume">
+<section class="page">
+  <div class="top">
+    <div><div class="name">RUSSELL DUDEK</div><div class="role">AI Practice & Operations Leader | Workforce AI | Technical-to-Business Translation | Adoption at Scale</div></div>
+    <div class="contact">Pittsburgh, PA<br>412.287.8640 · russelldudek@gmail.com<br><a href="https://www.linkedin.com/in/russelldudek">linkedin.com/in/russelldudek</a><br><a href="https://russelldudek.github.io/presidio/">russelldudek.github.io/presidio/</a></div>
+  </div>
+
+  <h2>Executive Profile</h2>
+  <p class="summary">AI-first operations and transformation leader with 20+ years building teams, technical programs and operating systems across AI, robotics, manufacturing, logistics, customer operations and high-reliability environments. Strongest where presales intent, delivery reality, partner ecosystems, talent capacity and measurable customer outcomes must stay aligned. Combines executive communication, technical range, operating discipline and human-centered adoption.</p>
+
+  <h2>Role-Aligned Capabilities</h2>
+  <div class="cap-grid">
+    <div class="cap">AI practice strategy & operating cadence</div><div class="cap">Presales-to-delivery alignment</div><div class="cap">Technical win & customer discovery</div>
+    <div class="cap">Talent capacity & leadership development</div><div class="cap">Partner GTM & co-sell thinking</div><div class="cap">Revenue, margin & value realization</div>
+    <div class="cap">Agentic AI & workflow design</div><div class="cap">Executive communication & thought leadership</div><div class="cap">Change adoption & operating metrics</div>
+  </div>
+
+  <h2>Professional Experience</h2>
+
+  <div class="job">
+    <div class="jobline"><strong>Director of Operations | Vape-Jet</strong><span>2025–Present · Pittsburgh, PA</span></div>
+    <div class="sub">Lead AI-first transformation across software-enabled robotics, machine vision, production, customer success and engineering operations.</div>
+    <ul>
+      <li>Connect production, customer success, engineering issue flow, ERP, Jira, HubSpot, Slack, fleet intelligence and AI-assisted workflows into a clearer execution system.</li>
+      <li>Translate field, factory, customer and machine signals into prioritized work, earlier risk detection, cleaner handoffs and measurable operating outcomes.</li>
+      <li>Advance support and learning loops across a fleet context of roughly 1,000 robots using telemetry, issue routing, AI-enabled analysis and cross-functional escalation.</li>
+      <li>Lead adoption through standard work, training, dashboards, operating cadence and explicit accountability across technical and non-technical teams.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="jobline"><strong>Founder / AI & Automation Advisor | DudeWorth</strong><span>2017–Present · Pittsburgh, PA</span></div>
+    <div class="sub">Design AI-readiness frameworks, agentic workflows and operating models for organizations adopting emerging technology.</div>
+    <ul>
+      <li>Build AI opportunity frameworks that score business value, feasibility, data readiness, change burden, governance, reuse potential and time-to-proof.</li>
+      <li>Develop agentic operating concepts using goal loops, structured context, retrieval, AI agents, human judgment, decision records and governance rails.</li>
+      <li>Translate technical AI concepts into executive narratives, customer discovery questions, operating controls, success measures and implementation roadmaps.</li>
+      <li>Advise across automation, robotics, logistics, knowledge work and customer operations with a focus on adoption and measurable workflow improvement.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="jobline"><strong>Operations Management / Site Leader | Amazon</strong><span>2014–2018 · Pittsburgh, PA</span></div>
+    <div class="sub">Led launch and 24/7 operations for Amazon Prime Pittsburgh in a high-throughput, customer-critical environment.</div>
+    <ul>
+      <li>Built operating rhythms, team structure, performance visibility, escalation paths, standard work and leadership cadence supporting approximately five million second-day orders annually.</li>
+      <li>Led improvements across labor planning, throughput, safety, quality, customer experience and team engagement using Lean and Gemba practices.</li>
+      <li>Contributed to logistics innovation through Prime Air research and Amazon Flex geolocation concepts, translating technology into customer and operating value.</li>
+    </ul>
+  </div>
+
+  <div class="callout"><strong>Leadership pattern:</strong> Make the system visible. Make ownership clear. Surface bad news early. Coach leaders to solve the next problem without waiting for permission.</div>
+  <div class="footer"><span>Russell Dudek · Presidio VP Workforce AI & Productivity</span><span>1 / 2</span></div>
+</section>
+
+<section class="page">
+  <div class="top">
+    <div><div class="name" style="font-size:18pt">RUSSELL DUDEK</div><div class="role">Selected Leadership, Technical Depth & Credentials</div></div>
+    <div class="contact">russelldudek@gmail.com<br><a href="https://russelldudek.github.io/presidio/">Candidate vision</a> · <a href="https://www.linkedin.com/in/russelldudek">LinkedIn</a></div>
+  </div>
+
+  <h2>Additional Leadership Experience</h2>
+
+  <div class="job">
+    <div class="jobline"><strong>Director of Operations & Engineering Management | Compunetics</strong><span>2000–2013 · Pittsburgh, PA</span></div>
+    <div class="sub">Progressed through R&D Program Manager, Production Manager, Strategic Acquisition Manager, Operations Manager and director-level leadership.</div>
+    <ul>
+      <li>Led engineering, manufacturing, quality, customer delivery and complex technical programs in advanced electronics and high-reliability environments.</li>
+      <li>Built quality systems, risk controls, standard work, root-cause practices and performance measures where technical credibility and delivery discipline had to coexist.</li>
+      <li>Collaborated with DoD, CERN, Intel, AMD and other technology leaders, translating specialized technical requirements into executable programs and accountable delivery.</li>
+      <li>Published industry work, contributed to technical consortium activity and communicated complex technology to technical and executive audiences.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="jobline"><strong>Chief Pilot, Autonomous Systems & Aerial Data Operations | ZeusVu</strong><span>2018–2022 · Pittsburgh, PA</span></div>
+    <ul>
+      <li>Led regulated and safety-critical drone operations across medical, energy, logistics, real estate and restricted-airspace contexts with a 100% safety record and no FAA incidents.</li>
+      <li>Developed TensorFlow-based concepts for automated inventory and computer-vision field intelligence, integrating workflow design with human oversight and operational controls.</li>
+      <li>Designed medical drone delivery and chain-of-custody concepts connecting technology, risk, stakeholders and adoption.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="jobline"><strong>Regional Director | Cardinal Building Products</strong><span>2021–2023 · Pittsburgh, PA</span></div>
+    <ul>
+      <li>Built the company’s first remote regional operation and established operating cadence across customer follow-up, sales coordination, logistics and fulfillment support.</li>
+      <li>Advanced AI-enhanced transportation-management and route-planning concepts to improve visibility and service execution.</li>
+      <li>Led CRM, digital marketing, SEO and online buying initiatives while balancing customer experience and commercial outcomes.</li>
+    </ul>
+  </div>
+
+  <h2>Selected Presidio-Relevant Operating Patterns</h2>
+  <div class="two-col">
+    <div>
+      <h3>Practice & Customer Motion</h3>
+      <ul>
+        <li>Translate customer pain into value hypotheses and delivery-ready work.</li>
+        <li>Connect commercial promise, technical design, adoption and measurable outcomes.</li>
+        <li>Create visible business reviews around pipeline, capacity, quality and economics.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Talent & Technical Leadership</h3>
+      <ul>
+        <li>Lead multidisciplinary technical and operating teams through ambiguity and rapid change.</li>
+        <li>Use skill visibility, coaching, promotion readiness and succession risk as operating inputs.</li>
+        <li>Build psychological safety for experts to challenge assumptions and surface risk early.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Education & Credentials</h2>
+  <p><strong>Bachelor of Science, University of Pittsburgh</strong> — academic grounding in materials science, physical chemistry and biology minor studies.</p>
+  <p><strong>Credentials:</strong> IBM Enterprise Design Thinking Practitioner · Six Sigma Certification · OSHA 10</p>
+
+  <h2>Technical & Business Toolkit</h2>
+  <p>Agentic AI · LLM workflows · RAG patterns · human-in-the-loop design · Python · SQL · JavaScript · TensorFlow · Tableau · ERP systems · Jira · Confluence · HubSpot · Slack · Lean · Gemba · quality systems · executive reporting · partner and vendor coordination.</p>
+
+  <h2>Professional Links</h2>
+  <p><strong>Candidate vision:</strong> <a href="https://russelldudek.github.io/presidio/">https://russelldudek.github.io/presidio/</a></p>
+  <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/russelldudek">https://www.linkedin.com/in/russelldudek</a></p>
+  <p><strong>Google Scholar:</strong> <a href="https://scholar.google.com/scholar?q=%22Russell%20Dudek%22">Scholar search for Russell Dudek</a></p>
+
+  <div class="callout"><strong>Fit thesis:</strong> Presidio needs a leader who can keep talent, technical win, partner leverage, delivery quality and business economics in the same operating conversation. That connective work is the through-line of my career.</div>
+  <div class="footer"><span>Russell Dudek · Presidio VP Workforce AI & Productivity</span><span>2 / 2</span></div>
+</section>
+</main>
+</body>
+</html>
