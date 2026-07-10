@@ -1,4 +1,4 @@
-name: Fetch Presidio Role
+name: Launch Presidio Candidate Vision
 on:
   push:
     branches: [ main ]
@@ -8,83 +8,35 @@ permissions:
   contents: write
 
 jobs:
-  fetch:
+  deploy:
     if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: Fetch UKG posting
+      - name: Reconstruct candidate site
         shell: bash
         run: |
-          cat > payload.json <<'JSON'
-          {
-            "opportunitySearch": {
-              "Top": 500,
-              "Skip": 0,
-              "QueryString": "",
-              "OrderBy": [{"Value":"postedDateDesc","PropertyName":"PostedDate","Ascending":false}],
-              "Filters": [
-                {"t":"TermsSearchFilterDto","fieldName":4,"extra":null,"values":[]},
-                {"t":"TermsSearchFilterDto","fieldName":5,"extra":null,"values":[]},
-                {"t":"TermsSearchFilterDto","fieldName":6,"extra":null,"values":[]},
-                {"t":"TermsSearchFilterDto","fieldName":37,"extra":null,"values":[]}
-              ]
-            },
-            "matchCriteria": {
-              "PreferredJobs":[],"Educations":[],"LicenseAndCertifications":[],"Skills":[],"hasNoLicenses":false,"SkippedSkills":[]
-            }
-          }
-          JSON
+          cat .deploy/index_*.txt | tr -d '\n' | base64 -d | gzip -d > index.html
+          cat .deploy/resume_*.txt | tr -d '\n' | base64 -d | gzip -d > resume.html
+          cat .deploy/cover_*.txt | tr -d '\n' | base64 -d | gzip -d > cover-letter.html
 
-          curl -sS -X POST \
-            -H 'Accept: application/json' \
-            -H 'Content-Type: application/json' \
-            --data @payload.json \
-            'https://recruiting.ultipro.com/PRE1019PRSD/JobBoard/4c05f321-903e-43d5-a4c0-5d9dd55dc34d/JobBoardView/LoadSearchResults' \
-            -o results.json
+          curl -sSL 'https://mms.businesswire.com/media/20221013005091/en/1247950/4/LOGO-Presidio-512-square.jpg' -o presidio_logo.jpg
 
-          jq '.opportunities[] | select(.Id == "ed167829-e71b-4771-8216-9326404d6f0a")' results.json > job.json
-          test -s job.json
+          test -s index.html
+          test -s resume.html
+          test -s cover-letter.html
+          test -s presidio_logo.jpg
 
-          curl -sSL \
-            'https://recruiting.ultipro.com/PRE1019PRSD/JobBoard/4c05f321-903e-43d5-a4c0-5d9dd55dc34d/OpportunityDetail?opportunityId=ed167829-e71b-4771-8216-9326404d6f0a&source=LinkedIn' \
-            -o job_page.html
-
-          python - <<'PY'
-          import re, json, html
-          from html.parser import HTMLParser
-          from pathlib import Path
-
-          source = Path('job_page.html').read_text(encoding='utf-8')
-          m = re.search(r'CandidateOpportunityDetail\((\{.*?\})\);', source, re.S)
-          if not m:
-              raise SystemExit('Opportunity JSON not found')
-          data = json.loads(m.group(1))
-
-          class Text(HTMLParser):
-              def __init__(self):
-                  super().__init__(); self.parts=[]
-              def handle_starttag(self, tag, attrs):
-                  if tag in {'p','br','li','h1','h2','h3','h4'}: self.parts.append('\n')
-                  if tag == 'li': self.parts.append('• ')
-              def handle_data(self, data): self.parts.append(data)
-              def get(self):
-                  txt = html.unescape(''.join(self.parts))
-                  txt = re.sub(r'[ \t]+',' ',txt)
-                  txt = re.sub(r'\n\s*\n+', '\n\n', txt)
-                  return txt.strip()
-
-          parser = Text(); parser.feed(data.get('Description',''))
-          out = [f"TITLE: {data.get('Title','')}", f"REQUISITION: {data.get('RequisitionNumber','')}", f"POSTED: {data.get('PostedDate','')}", '', parser.get()]
-          Path('job_description.txt').write_text('\n'.join(out), encoding='utf-8')
-          PY
-
-      - name: Commit role research
+      - name: Clean research scaffolding and publish
         shell: bash
         run: |
+          rm -rf .deploy
+          rm -f job.json job_page.html job_description.txt research-link.md README.md
+          rm -f .github/workflows/fetch-role.yml
+
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add job.json job_page.html job_description.txt
-          git diff --cached --quiet || git commit -m 'Capture parsed target role details [skip ci]'
+          git add -A
+          git commit -m 'Launch Presidio candidate vision site [skip ci]'
           git push
