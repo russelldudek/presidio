@@ -1,0 +1,1 @@
+[Open proxied job posting](https://r.jina.ai/http://recruiting.ultipro.com/PRE1019PRSD/JobBoard/4c05f321-903e-43d5-a4c0-5d9dd55dc34d/OpportunityDetail?opportunityId=ed167829-e71b-4771-8216-9326404d6f0a%26source=LinkedIn)
