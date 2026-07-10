@@ -51,11 +51,40 @@ jobs:
             'https://recruiting.ultipro.com/PRE1019PRSD/JobBoard/4c05f321-903e-43d5-a4c0-5d9dd55dc34d/OpportunityDetail?opportunityId=ed167829-e71b-4771-8216-9326404d6f0a&source=LinkedIn' \
             -o job_page.html
 
+          python - <<'PY'
+          import re, json, html
+          from html.parser import HTMLParser
+          from pathlib import Path
+
+          source = Path('job_page.html').read_text(encoding='utf-8')
+          m = re.search(r'CandidateOpportunityDetail\((\{.*?\})\);', source, re.S)
+          if not m:
+              raise SystemExit('Opportunity JSON not found')
+          data = json.loads(m.group(1))
+
+          class Text(HTMLParser):
+              def __init__(self):
+                  super().__init__(); self.parts=[]
+              def handle_starttag(self, tag, attrs):
+                  if tag in {'p','br','li','h1','h2','h3','h4'}: self.parts.append('\n')
+                  if tag == 'li': self.parts.append('• ')
+              def handle_data(self, data): self.parts.append(data)
+              def get(self):
+                  txt = html.unescape(''.join(self.parts))
+                  txt = re.sub(r'[ \t]+',' ',txt)
+                  txt = re.sub(r'\n\s*\n+', '\n\n', txt)
+                  return txt.strip()
+
+          parser = Text(); parser.feed(data.get('Description',''))
+          out = [f"TITLE: {data.get('Title','')}", f"REQUISITION: {data.get('RequisitionNumber','')}", f"POSTED: {data.get('PostedDate','')}", '', parser.get()]
+          Path('job_description.txt').write_text('\n'.join(out), encoding='utf-8')
+          PY
+
       - name: Commit role research
         shell: bash
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add job.json job_page.html
-          git diff --cached --quiet || git commit -m 'Capture target role page [skip ci]'
+          git add job.json job_page.html job_description.txt
+          git diff --cached --quiet || git commit -m 'Capture parsed target role details [skip ci]'
           git push
