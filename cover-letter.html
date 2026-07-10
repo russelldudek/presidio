@@ -1,1 +1,74 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Russell Dudek | Presidio Cover Letter</title><style>body{margin:0;background:#071b2d;color:white;font-family:Arial,sans-serif;display:grid;place-items:center;min-height:100vh}.loading{text-align:center}.mark{width:54px;height:54px;border:5px solid rgba(255,255,255,.18);border-top-color:#00a9e0;border-radius:50%;margin:0 auto 18px;animation:s 1s linear infinite}@keyframes s{to{transform:rotate(360deg)}}</style></head><body><div class="loading"><div class="mark"></div><strong>Loading cover letter…</strong></div><script type="module">const u='https://raw.githubusercontent.com/russelldudek/presidio/main/.deploy/cover_01.txt';const r=await fetch(u);if(!r.ok)throw new Error('Unable to load cover letter');const b64=(await r.text()).replace(/\s/g,'');const bytes=Uint8Array.from(atob(b64),c=>c.charCodeAt(0));const stream=new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'));let html=await new Response(stream).text();html=html.replaceAll('presidio_logo.jpg','https://mms.businesswire.com/media/20221013005091/en/1247950/4/LOGO-Presidio-512-square.jpg');document.open();document.write(html);document.close();</script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Russell Dudek | Presidio Cover Letter</title>
+<style>
+:root{--navy:#071b2d;--cyan:#00a9e0;--ink:#10202c;--muted:#5c6d78;--line:#d9e7ee;--mist:#f3f8fb}
+*{box-sizing:border-box}body{margin:0;background:#eaf2f6;color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.43}
+.toolbar{position:sticky;top:0;z-index:10;display:flex;justify-content:center;gap:10px;padding:12px;background:rgba(7,27,45,.96);box-shadow:0 8px 24px rgba(0,0,0,.2)}
+.toolbar button,.toolbar a{border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:10px 15px;background:transparent;color:white;text-decoration:none;font-weight:800;cursor:pointer}
+.toolbar .primary{background:var(--cyan);color:var(--navy);border-color:var(--cyan)}
+.letter{width:8.5in;min-height:11in;margin:24px auto;background:white;padding:.58in .7in .5in;box-shadow:0 22px 60px rgba(7,27,45,.18);position:relative}
+.top{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;padding-bottom:12px;border-bottom:4px solid var(--cyan);margin-bottom:14px}
+.name{font-size:23pt;letter-spacing:-.04em;font-weight:950;color:var(--navy);line-height:.95}
+.role{margin-top:7px;font-size:10pt;font-weight:900;color:#0086b4}
+.contact{text-align:right;font-size:8.4pt;color:var(--muted)}
+.contact a{color:#007fae;text-decoration:none}
+.meta{font-size:9pt;margin-bottom:12px}
+.subject{font-size:10pt;font-weight:900;color:var(--navy);margin:10px 0 13px}
+p{font-size:9.35pt;margin:0 0 8px;line-height:1.44}
+.signature{margin-top:12px}.signature strong{font-size:10pt}
+.site-link{display:inline-block;margin:4px 0 2px;padding:7px 10px;background:var(--mist);border-left:4px solid var(--cyan);font-size:8.7pt;font-weight:850}
+.site-link a{color:#007fae;text-decoration:none}
+.footer{position:absolute;left:.7in;right:.7in;bottom:.23in;padding-top:6px;border-top:1px solid var(--line);display:flex;justify-content:space-between;color:#71818a;font-size:7.3pt}
+@media(max-width:900px){.letter{width:100%;min-height:auto;margin:0;padding:24px;box-shadow:none}.top{grid-template-columns:1fr}.contact{text-align:left}.footer{position:static;margin-top:24px}}
+@page{size:letter;margin:0}
+@media print{
+  body{background:white}.toolbar{display:none!important}.letter{width:8.5in;height:11in;min-height:11in;margin:0;padding:.5in .64in .42in;box-shadow:none;overflow:hidden}
+  p{font-size:9.15pt;line-height:1.39;margin-bottom:7px}
+  .top{margin-bottom:11px}.footer{left:.64in;right:.64in;bottom:.17in}
+  a{color:inherit;text-decoration:none}
+}
+</style>
+</head>
+<body>
+<div class="toolbar">
+  <button class="primary" onclick="window.print()">Print / Save as PDF</button>
+  <a href="index.html">Back to candidate vision</a>
+  <a href="resume.html">Resume</a>
+  <a href="https://www.linkedin.com/in/russelldudek" target="_blank" rel="noopener">LinkedIn</a>
+</div>
+
+<main class="letter">
+  <div class="top">
+    <div><div class="name">RUSSELL DUDEK</div><div class="role">AI Practice & Operations Leader</div></div>
+    <div class="contact">Pittsburgh, PA<br>412.287.8640 · russelldudek@gmail.com<br><a href="https://www.linkedin.com/in/russelldudek">linkedin.com/in/russelldudek</a></div>
+  </div>
+
+  <div class="meta">July 10, 2026<br>Hiring Team<br>Presidio</div>
+  <div class="subject">Re: VP Workforce AI & Productivity</div>
+
+  <p>Dear Presidio Hiring Team,</p>
+
+  <p>It probably feels like the Workforce AI market is moving faster than any capacity plan can comfortably absorb. Demand is accelerating, technical talent is scarce, partner energy is high, and customers still need proof that AI and Microsoft productivity investments will change the way work gets done—not simply add another layer of technology. That is the challenge that draws me to Presidio’s VP Workforce AI & Productivity role.</p>
+
+  <p>My career has been built where technology, people and operating pressure meet. I have led high-throughput Amazon operations, advanced-electronics engineering and manufacturing programs, autonomous systems, robotics and machine-vision operations, and AI-first transformation work. Across those environments, the recurring work has been the same: translate complexity into a clear operating system, make ownership visible, align technical and business teams, develop leaders, measure what matters, and help good ideas survive contact with reality.</p>
+
+  <p>At Vape-Jet, I work across production, engineering issue flow, customer success, machine vision, ERP and Jira workflows, telemetry, and a fleet context of roughly 1,000 robots. Through DudeWorth, Core and DudexOS, I design AI-readiness frameworks and agentic operating concepts using goal loops, structured context, retrieval patterns, human judgment, decision records and governance rails. Earlier, at Amazon, I built operating cadence and performance systems in a customer-critical environment supporting approximately five million second-day orders annually.</p>
+
+  <p>The Presidio role is compelling because it is not simply an AI strategy position. It joins three distinct engines—Workforce AI Presales, Workforce AI Delivery and Microsoft Productivity Presales—and asks one leader to align technical win, customer outcomes, talent evolution, capacity, partner relationships, revenue and gross profit. I would approach that challenge by creating one practice rhythm: shared account hypotheses, disciplined presales-to-delivery handoffs, visible capacity-to-opportunity planning, partner motions measured by pipeline movement, and delivery learning that improves the next sale.</p>
+
+  <p>I also understand the fair concern: I have not previously held this exact title or inherited this exact Microsoft partner-and-practice structure. I would not blur that. My case is the pattern beneath it. I have repeatedly built cross-functional systems around emerging technology, scaled teams under customer pressure, translated technical complexity into business value, and created leadership cadences where accountability and learning coexist. I would arrive ready to learn Presidio’s Microsoft and partner machinery quickly while contributing immediately to the connective work that helps experts win together.</p>
+
+  <p>I built a short candidate vision to make that thinking concrete:</p>
+  <div class="site-link"><a href="https://russelldudek.github.io/presidio/">https://russelldudek.github.io/presidio/</a></div>
+
+  <p>I would welcome the opportunity to pressure-test the thesis with Presidio leadership and discuss where my operating background, AI practice thinking and leadership approach could help the Workforce AI and Productivity practice grow with both speed and discipline.</p>
+
+  <div class="signature">Carpe diem,<br><strong>Russell Dudek</strong></div>
+
+  <div class="footer"><span>Russell Dudek · VP Workforce AI & Productivity Candidate</span><span>Candidate vision: russelldudek.github.io/presidio/</span></div>
+</main>
+</body>
+</html>
