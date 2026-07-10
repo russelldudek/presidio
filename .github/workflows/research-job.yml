@@ -3,6 +3,8 @@ name: Research Presidio Job
 on:
   push:
     branches: [ main ]
+  pull_request:
+    branches: [ main ]
   workflow_dispatch:
 
 jobs:
@@ -14,7 +16,7 @@ jobs:
           python - <<'PY'
           import requests
           from bs4 import BeautifulSoup
-          import re, json
+          import re
           url = 'https://recruiting.ultipro.com/PRE1019PRSD/JobBoard/4c05f321-903e-43d5-a4c0-5d9dd55dc34d/OpportunityDetail?opportunityId=ed167829-e71b-4771-8216-9326404d6f0a&source=LinkedIn'
           r = requests.get(url, headers={'User-Agent':'Mozilla/5.0'}, timeout=60)
           print('STATUS', r.status_code)
