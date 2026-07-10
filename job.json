@@ -1,0 +1,44 @@
+{
+  "Id": "ed167829-e71b-4771-8216-9326404d6f0a",
+  "Featured": true,
+  "Title": "VP Workforce AI & Productivity",
+  "RequisitionNumber": "ENGIN009919",
+  "FullTime": true,
+  "JobCategoryName": "Engineering",
+  "Locations": [
+    {
+      "Id": "da7a0c26-710e-407b-8fcc-f915eca2a905",
+      "LocalizedName": "USA (Remote)",
+      "LocalizedLocationId": "USA (Remote)",
+      "LocalizedDescription": null,
+      "Address": {
+        "Line1": null,
+        "Line2": null,
+        "City": null,
+        "PostalCode": null,
+        "State": null,
+        "Country": {
+          "Code": "USA",
+          "Name": "United States"
+        }
+      },
+      "DisplayName": true,
+      "DisplayLocationId": false,
+      "DisplayAddress": false,
+      "DisplayStreetAddress": false,
+      "DisplayDescription": false,
+      "SourceOfTruth": 0,
+      "Coordinates": {
+        "Latitude": 46.09249645722756,
+        "Longitude": -115.97626959614996
+      }
+    }
+  ],
+  "PostedDate": "2026-07-09T12:41:05.117Z",
+  "BriefDescription": "We have an exciting opportunity for a Vice President of Workforce AI & Productivity to join the Presidio team. This individual's primary responsibility is to lead and scale Presidio's Workforce AI and Microsoft Productivity practices across both presales and delivery motions. Reporting directly to the Senior Vice President of Solutions Engineering, this leader will have direct responsibility for three distinct teams: the Workforce AI Presales team, the Workforce AI Delivery team, and the Microsoft Productivity Presales team.",
+  "MatchScore": 1.0,
+  "MatchedLocations": [],
+  "Distance": null,
+  "JobLocationType": null,
+  "OpportunityType": 0
+}
